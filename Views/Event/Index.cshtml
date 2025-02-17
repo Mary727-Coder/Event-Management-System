@@ -1,0 +1,39 @@
+﻿@using Event-Management-Web-App.Models
+@model IEnumerable<Event>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="rounded text-center text-light bg-primary p-5 my-3">
+    <h1>Welcome to the Event Management System</h1>
+    <p>Find and register for awesome events happening near you!</p>
+</div>
+
+<h3 class="text-primary">Upcoming Events</h3>
+
+@if (Model.Any())
+{
+    <table class="table table-bordered">
+        <tbody>
+            @foreach (Event e in Model)
+            {
+                <tr>
+                    <td>
+                        <h4>@e.EventTitle</h4> @* Event Title *@
+                        <div>@e.EventStartDate.ToShortDateString()</div> @* Event Start Date *@
+                        <a asp-controller="Event" asp-action="Details" asp-route-eventId="@e.EventId" class="btn btn-primary my-3">View Details</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No upcoming events found at this time.</p>
+}
+
+
+
+

@@ -1,0 +1,36 @@
+﻿@using Event-Management-Web-App.Models
+@model Attendee
+
+<h2>Event Registration</h2>
+<hr />
+
+<form asp-controller="Attendee" asp-action="Register" method="post">
+    <input type="hidden" asp-for="EventId" />
+    <input type="hidden" asp-for="AttendeeId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="AttendeeName" class="form-label"></label>
+        <input asp-for="AttendeeName" class="form-control" />
+        <span asp-validation-for="AttendeeName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AttendeeEmail" class="form-label"></label>
+        <input asp-for="AttendeeEmail" class="form-control" />
+        <span asp-validation-for="AttendeeEmail" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary" >Complete Registration</button>
+        <a asp-controller="Event" asp-action="Details" asp-route-eventId="@Model.EventId" class="btn btn-outline-primary">Back to Event Details</a>
+    </div>
+</form> 
+
+
+
+
+
+
+
+

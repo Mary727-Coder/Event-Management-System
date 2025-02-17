@@ -1,0 +1,24 @@
+﻿@model Event
+<h2>@Model.EventTitle</h2> <!-- Event title -->
+
+<p><strong>Description:</strong> @Model.EventDescription</p> <!-- Event Description -->
+<p><strong>Start date:</strong> @Model.EventStartDate.ToShortDateString()</p> <!-- Event Start Date -->
+@if (Model.EventEndDate.HasValue)    @* <!-- Event End Date --> *@
+{
+    <p><strong>End Date:</strong> @Model.EventEndDate.Value.ToShortDateString()</p>
+}
+<p><strong>Location:</strong> @Model.EventLocation</p> <!-- Event Location -->
+
+<p>
+    <strong>Available spots:</strong>
+
+    @if ((@Model.EventMaxAttendees - @Model.EventRegistrations) > 0)
+    {
+        var availableSpots = @Model.EventMaxAttendees - @Model.EventRegistrations;
+        <span>@availableSpots</span> <!-- Calculated value -->
+    }
+    else
+    {
+        <span class="text-danger">Full</span>
+    }
+</p>

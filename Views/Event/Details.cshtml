@@ -1,0 +1,22 @@
+﻿@using Event-Management-Web-App.Models
+@model Event
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<partial name="_EventDetailsConfirmation" model="@Model" />
+
+
+<p>
+    @if((@Model.EventMaxAttendees - @Model.EventRegistrations) > 0)
+    {
+        <a asp-controller="Attendee" asp-action="Register" asp-route-eventId="@Model.EventId" class="btn btn-primary">Register</a>
+    }
+    <a asp-controller="Event" asp-action="Index" asp-route-eventId="@Model.EventId" class="btn btn-outline-primary">Return to Home Page</a>
+</p>
+
+ 
+
+
+
+
